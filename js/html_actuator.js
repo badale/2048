@@ -61,8 +61,23 @@ HTMLActuator.prototype.addTile = function (tile) {
 
   this.applyClasses(wrapper, classes);
 
+  var outputtext = new Array();
+  outputtext[0] = "";
+  outputtext[1] = "sapin";
+  outputtext[2] = "getNextLine";
+  outputtext[3] = "minishell";
+  outputtext[4] = "42sh";
+  outputtext[5] = "my_ftp";
+  outputtext[6] = "bomberman";
+  outputtext[7] = "zappy";
+  outputtext[8] = "babel";
+  outputtext[9] = "r-Type";
+  outputtext[10] = "zia";
+  outputtext[11] = "YOU MAD BRO";
+
+
   inner.classList.add("tile-inner");
-  inner.textContent = tile.value;
+  inner.textContent = outputtext[(Math.log(tile.value) / Math.LN2)] || '';
 
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
@@ -126,7 +141,7 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : "Game over!";
+  var message = won ? "You Won !" : "Game Over";
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
